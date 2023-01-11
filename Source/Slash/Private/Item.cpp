@@ -2,11 +2,11 @@
 
 
 #include "Item.h"
+#include "Slash/Slash.h"
 
 // Sets default values
 AItem::AItem()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 }
 
@@ -15,12 +15,9 @@ void AItem::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT("Begin play called!"));
-
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(1, 60.f, FColor::Green, FString("Item on screen message!"));
-	}
+	UWorld* World = GetWorld();
+	FVector Location = GetActorLocation();
+	DRAW_SPHERE(Location)
 }
 
 // Called every frame
