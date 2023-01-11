@@ -2,8 +2,7 @@
 
 
 #include "Item.h"
-#include "DrawDebugHelpers.h"
-#include "Slash/Slash.h"
+#include "Slash/DebugMacros.h"
 
 AItem::AItem()
 {
@@ -18,8 +17,8 @@ void AItem::BeginPlay()
 	FVector Location = GetActorLocation();
 	FVector Forward = GetActorForwardVector();
 	
-	DRAW_SPHERE(Location)
-	DRAW_LINE(Location, Location + Forward * 100.f)
+	DRAW_SPHERE(Location);
+	DRAW_VECTOR(Location, Location + Forward * 100);
 }
 
 void AItem::Tick(float DeltaTime)
